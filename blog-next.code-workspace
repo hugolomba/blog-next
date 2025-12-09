@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "path": "."
+    },
+    {
+      "path": "../../blog/blog"
+    }
+  ],
+  "settings": {
+    "folder-color.pathColors": [
+      {
+        "folderPath": "/Users/hugo/repos/blog/blog/",
+        "color": "foldercolorizer.color_006699"
+      }
+    ]
+  }
+}
