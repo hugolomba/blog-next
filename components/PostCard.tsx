@@ -1,11 +1,10 @@
 import type { Post } from "@/app/types/types";
 import Link from "next/link";
 import Image from "next/image";
-// import { FaHeart, FaRegHeart, FaRegComment } from "react-icons/fa";
+import { FaHeart, FaRegHeart, FaRegComment } from "react-icons/fa";
 // import { useAuth } from "../contexts/authContext";
 // import { useState } from "react";
-// import { FaBookmark, FaRegBookmark } from "react-icons/fa";
-// import { Link } from "react-router-dom";
+import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 
 export default function PostCard({ post }: { post: Post }) {
   // const { user } = useAuth();
@@ -40,17 +39,12 @@ export default function PostCard({ post }: { post: Post }) {
           height={200}
           className="w-full h-42 object-cover rounded-md"
         />
-        {/* <img
-          src={post.coverImage}
-          alt={post.title}
-          className="w-full h-42 object-cover rounded-md "
-        /> */}
 
         <div className="flex justify-between items-center mt-2 mb-1 md:flex-col md:items-start">
           <h3 className="text-lg font-semibold">{post.title}</h3>
           <div className="text-gray-600 flex items-center gap-2 cursor-pointer">
             <span className="flex flex-row items-center gap-0.5">
-              {/* <FaRegComment /> {post.comments.length} */}
+              <FaRegComment /> {post.comments.length}
             </span>
             {/* <span className="flex flex-row items-center gap-0.5">
               {handleBookmarkIcon()} {post.savedBy.length}
@@ -73,11 +67,13 @@ export default function PostCard({ post }: { post: Post }) {
 
           <div className="text-gray-500 text-sm flex gap-2 align-center">
             <span>{post.author.name}</span>
-            {/* <img
+            <Image
               src={post.author.avatarImage}
               alt={post.author.name}
-              className="inline-block w-4.5 h-4.5 rounded-full mr-2"
-            /> */}
+              width={18}
+              height={18}
+              className="rounded-full"
+            />
           </div>
         </div>
       </Link>
