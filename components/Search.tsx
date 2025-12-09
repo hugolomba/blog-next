@@ -11,7 +11,7 @@ export default function Search() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/search?q=${query}`);
+    router.push(`/?q=${query}`);
   };
 
   return (

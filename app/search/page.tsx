@@ -21,5 +21,5 @@ export default async function SearchPage({
   console.log("Posts:", posts);
   console.log("Authors:", authors);
 
-  return <SearchResults posts={posts} authors={authors} query={q} />;
+  return <SearchResults searchResults={posts} />;
 }
