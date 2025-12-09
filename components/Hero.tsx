@@ -1,6 +1,7 @@
 // import { useAuth } from "../contexts/authContext";
 // import LoggedGreetings from "./LoggedGreetings";
 import NotLoggedGreeting from "@/components/NotLoggedGreeting";
+import Search from "./Search";
 
 export default function Header() {
   // const { user } = useAuth();
@@ -10,6 +11,7 @@ export default function Header() {
       {/* {user ? <LoggedGreetings user={user} /> :  */}
       <NotLoggedGreeting />
       {/* } */}
+      <Search />
     </section>
   );
 }

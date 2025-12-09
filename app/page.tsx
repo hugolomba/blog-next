@@ -1,5 +1,6 @@
 import Header from "@/components/Hero";
 import RecentPosts from "@/components/RecentPosts";
+import Search from "@/components/Search";
 import SearchResults from "@/components/SearchResults";
 import { getPosts } from "@/lib/api";
 

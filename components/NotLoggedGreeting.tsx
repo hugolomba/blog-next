@@ -18,7 +18,6 @@ export default function NotLoggedGreeting() {
       <h3 className="text-center text-gray-600 mt-8">
         Feel free to explore and enjoy reading!
       </h3>
-      <Search />
     </div>
   );
 }
