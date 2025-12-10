@@ -33,7 +33,7 @@ export default function PostCard({ post }: { post: Post }) {
     <li className="bg-white rounded-md shadow-md p-4 mb-6 hover:shadow-lg transition w-full md:w-sm lg:w-sm xl:w-sm">
       <Link href={`/post/${post.id}`}>
         <Image
-          src={post.coverImage || "/default-cover.jpg"}
+          src={post.coverImage}
           alt={post.title}
           width={400}
           height={200}
