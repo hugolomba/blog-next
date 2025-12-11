@@ -5,6 +5,9 @@
     },
     {
       "path": "../../blog/blog"
+    },
+    {
+      "path": "../../blog-api"
     }
   ],
   "settings": {
@@ -12,6 +15,10 @@
       {
         "folderPath": "/Users/hugo/repos/blog/blog/",
         "color": "foldercolorizer.color_006699"
+      },
+      {
+        "folderPath": "/Users/hugo/repos/blog-api/",
+        "color": "foldercolorizer.color_00cc00"
       }
     ]
   }
