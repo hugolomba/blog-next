@@ -1,11 +1,26 @@
 import PostCard from "@/components/PostCard";
-import type { SearchResultsProps } from "@/app/types/types";
+import type { Prisma } from "@/prisma/generated/client";
+
 // import { SearchContext } from "../contexts/SearchContext";
 // import { useContext, useState } from "react";
 // import SearchUserResultCard from "@/components/SearchUserResultCard";
 // import Loading from "./Loading";
 
-export default function SearchResults({ searchResults }: SearchResultsProps) {
+export default function SearchResults({
+  searchResults,
+}: {
+  searchResults:
+    | Prisma.PostGetPayload<{
+        include: {
+          author: true;
+          comments: true;
+          likes: true;
+          categories: true;
+          savedBy: true;
+        };
+      }>[]
+    | null;
+}) {
   // const { setSearchResults, searchAuthorsResults, isLoadingSearch } = useContext(SearchContext);
   // const [searchType, setSearchType] = useState<"articles" | "authors">("articles");
 

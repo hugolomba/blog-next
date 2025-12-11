@@ -1,12 +1,23 @@
-import type { Post } from "@/app/types/types";
+// import type { Post } from "@/types/types";
 import Link from "next/link";
 import Image from "next/image";
 import { FaHeart, FaRegHeart, FaRegComment } from "react-icons/fa";
-// import { useAuth } from "../contexts/authContext";
-// import { useState } from "react";
 import { FaBookmark, FaRegBookmark } from "react-icons/fa";
+import type { Prisma } from "@/prisma/generated/client";
 
-export default function PostCard({ post }: { post: Post }) {
+export default function PostCard({
+  post,
+}: {
+  post: Prisma.PostGetPayload<{
+    include: {
+      author: true;
+      comments: true;
+      likes: true;
+      categories: true;
+      savedBy: true;
+    };
+  }>;
+}) {
   // const { user } = useAuth();
   // const [likes] = useState(post.likes.map((like: any) => like.userId)); // Array of user IDs who liked the post
   // const [bookmarks] = useState(
@@ -67,13 +78,15 @@ export default function PostCard({ post }: { post: Post }) {
 
           <div className="text-gray-500 text-sm flex gap-2 align-center">
             <span>{post.author.name}</span>
-            <Image
-              src={post.author.avatarImage}
-              alt={post.author.name}
-              width={18}
-              height={18}
-              className="rounded-full"
-            />
+            {post.author.avatarImage && (
+              <Image
+                src={post.author.avatarImage}
+                alt={post.author.name}
+                width={18}
+                height={18}
+                className="rounded-full"
+              />
+            )}
           </div>
         </div>
       </Link>

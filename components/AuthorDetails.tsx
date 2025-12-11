@@ -1,7 +1,19 @@
-import type { Post } from "@/app/types/types";
+import type { Prisma } from "@/prisma/generated/client";
+
 import Image from "next/image";
 
-export default function AuthorDetails({ author }: { author: Post["author"] }) {
+export default function AuthorDetails({
+  author,
+}: {
+  author: Prisma.UserGetPayload<{
+    select: {
+      name: true;
+      surname: true;
+      avatarImage: true;
+      bio: true;
+    };
+  }>;
+}) {
   return (
     <div className="flex flex-col gap-1 items-left mt-8 p-4 border-t border-gray-300 border-b">
       <Image

@@ -1,31 +1,29 @@
 import Header from "@/components/Hero";
 import RecentPosts from "@/components/RecentPosts";
-import Search from "@/components/Search";
 import SearchResults from "@/components/SearchResults";
-import { getPosts } from "@/lib/api";
+import { getPublishedPosts, searchPosts } from "@/lib/api";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  const baseUrl = process.env.API_URL_BASE;
-
-  const { q: query } = await searchParams;
+  const { q } = await searchParams;
+  const query = Array.isArray(q) ? q[0] : q; // take the first element if it's an array
 
   console.log("Search query on home page:", query);
 
   let posts;
 
   if (query) {
-    // search results
-    posts = await fetch(`${baseUrl}/posts/search?q=${query}`).then((r) =>
-      r.json()
-    );
+    // perform search with the query
+    posts = await searchPosts(query);
   } else {
     // fetch all posts
-    posts = await getPosts();
+    posts = await getPublishedPosts();
   }
+
+  console.log("Posts to display on home page:", posts);
 
   return (
     <main className="container mx-auto px-4">

@@ -1,22 +1,24 @@
-import type { Post } from "@/app/types/types";
+import type { Prisma } from "@/prisma/generated/client";
 import { FaHeart, FaRegHeart, FaRegBookmark, FaBookmark } from "react-icons/fa";
 import { MdDelete, MdEdit } from "react-icons/md";
 import Image from "next/image";
 import AuthorDetails from "@/components/AuthorDetails";
-// import { useAuth } from "../contexts/authContext";
-// import { useState } from "react";
-// import AuthorDetails from "./AuthorDetails";
-// import { Link, useNavigate } from "react-router-dom";
 
-export default function Article({ post }: { post: Post }) {
-  // const { user } = useAuth();
-  // const [likes, setLikes] = useState(post.likes.map((like: any) => like.userId)); // Array of user IDs who liked the post
-  // const [bookmarks, setBookmarks] = useState(post.savedBy.map((bookmark: any) => bookmark.userId)); // Array of user IDs who bookmarked the post
-  // const [isDialogOpen, setIsDialogOpen] = useState(false);
-  // const navigate = useNavigate();
-
-  function timeAgo(dateString: string) {
-    const date = new Date(dateString);
+export default function Article({
+  post,
+}: {
+  post: Prisma.PostGetPayload<{
+    include: {
+      author: true;
+      comments: true;
+      likes: true;
+      categories: true;
+      savedBy: true;
+    };
+  }>;
+}) {
+  function timeAgo(date: Date) {
+    // const date = new Date(dateString);
     const now = new Date();
     const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
@@ -38,82 +40,6 @@ export default function Article({ post }: { post: Post }) {
 
     return "just now";
   }
-
-  // const handleLike = async () => {
-  //   try {
-  //     // Call API to like the post
-  //     await fetch(`${import.meta.env.VITE_API_URL_BASE}/posts/${post.id}/like`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `Bearer ${localStorage.getItem("token")}`
-  //       }
-  //     });
-  //     if (user && !likes.includes(user.id)) {
-  //       setLikes([...likes, user.id]);
-  //     } else if (user) {
-  //       setLikes(likes.filter(id => id !== user.id));
-  //     }
-  //   } catch (error) {
-  //     console.error("Error liking post:", error);
-  //   }
-  // };
-
-  // const handleBookmark = async () => {
-  //   if (!user) return;
-
-  //   try {
-  //     await fetch(`${import.meta.env.VITE_API_URL_BASE}/posts/${post.id}/save`, {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `Bearer ${localStorage.getItem("token")}`
-  //       }
-  //     });
-  //     if (user &&!bookmarks.includes(user.id)) {
-  //       setBookmarks([...bookmarks, user.id]);
-  //     } else {
-  //       setBookmarks(bookmarks.filter(id => id !== user.id));
-  //     }
-  //   } catch (error) {
-  //     console.error("Error bookmarking post:", error);
-  //   }
-  // };
-
-  // const handleBookmarkIcon = () => {
-  //   if (!user) return null;
-  //   if (bookmarks.includes(user.id)) {
-  //     return <FaBookmark onClick={handleBookmark} className="text-blue-500" />
-  //   } else {
-  //     return <FaRegBookmark onClick={handleBookmark}/>
-  //   }
-  // };
-
-  // const handleLikeIcon = () => {
-  //   if (!user) return null;
-  //   if (likes.includes(user.id)) {
-  //     return <FaHeart onClick={handleLike} className="text-red-500" />
-  //   } else {
-  //     return <FaRegHeart onClick={handleLike} />;
-  //   }
-  // };
-
-  // const handlePostDelete = async () => {
-  //   try {
-  //     await fetch(`${import.meta.env.VITE_API_URL_BASE}/posts/${post.id}`, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `Bearer ${localStorage.getItem("token")}`
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error("Error deleting post:", error);
-  //   } finally {
-  //     setIsDialogOpen(false);
-  //     navigate("/");
-  //   }
-  // };
 
   return (
     <article className="relative p-2.5">

@@ -1,3 +1,4 @@
+import type { Prisma } from "@/prisma/generated/client";
 // import { Link, useParams } from "react-router-dom";
 // import Article from "../components/Article";
 // import { useEffect, useState } from "react";
@@ -8,7 +9,7 @@
 // import { useAuth } from "../contexts/authContext";
 import Article from "@/components/Article";
 // import Comments from "@/components/Comments";
-import type { Post } from "@/app/types/types";
+// import type { Post } from "@/types/types";
 
 import { getPostById } from "@/lib/api";
 
@@ -77,7 +78,9 @@ export default async function PostDetailPage({
   params: { postId: string };
 }) {
   const { postId } = await params;
+
   const post = await getPostById(postId);
+  console.log("Post fetched for PostDetailPage:", post);
 
   return (
     <div className="mt-2">

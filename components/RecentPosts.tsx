@@ -1,6 +1,19 @@
 import PostCard from "./PostCard";
-import type { RecentPostsProps } from "@/app/types/types";
+// import type { RecentPostsProps } from "@/types/types";
 // import Loading from "./Loading";
+import type { Prisma } from "@/prisma/generated/client";
+
+interface RecentPostsProps {
+  publishedPosts: Prisma.PostGetPayload<{
+    include: {
+      author: true;
+      comments: true;
+      likes: true;
+      categories: true;
+      savedBy: true;
+    };
+  }>[];
+}
 
 export default function RecentPosts({ publishedPosts }: RecentPostsProps) {
   return (

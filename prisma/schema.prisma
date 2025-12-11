@@ -23,7 +23,7 @@ model User {
   email      String     @unique
   password   String
   bio        String?
-  avatarImage      String?
+  avatarImage      String
   isAdmin   Boolean  @default(false)
   posts      Post[]
   comments   Comment[]
@@ -39,7 +39,7 @@ model Post {
   id          Int          @id @default(autoincrement())
   title       String
   content     String
-  coverImage  String?
+  coverImage  String
   published   Boolean      @default(false)
   author      User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId    Int

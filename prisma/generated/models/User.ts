@@ -223,7 +223,7 @@ export type UserGroupByOutputType = {
   email: string
   password: string
   bio: string | null
-  avatarImage: string | null
+  avatarImage: string
   isAdmin: boolean
   createdAt: Date
   updatedAt: Date
@@ -260,7 +260,7 @@ export type UserWhereInput = {
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   bio?: Prisma.StringNullableFilter<"User"> | string | null
-  avatarImage?: Prisma.StringNullableFilter<"User"> | string | null
+  avatarImage?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -280,7 +280,7 @@ export type UserOrderByWithRelationInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
-  avatarImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarImage?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -303,7 +303,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   surname?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   bio?: Prisma.StringNullableFilter<"User"> | string | null
-  avatarImage?: Prisma.StringNullableFilter<"User"> | string | null
+  avatarImage?: Prisma.StringFilter<"User"> | string
   isAdmin?: Prisma.BoolFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
@@ -323,7 +323,7 @@ export type UserOrderByWithAggregationInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
-  avatarImage?: Prisma.SortOrderInput | Prisma.SortOrder
+  avatarImage?: Prisma.SortOrder
   isAdmin?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -345,7 +345,7 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   bio?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  avatarImage?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  avatarImage?: Prisma.StringWithAggregatesFilter<"User"> | string
   isAdmin?: Prisma.BoolWithAggregatesFilter<"User"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -358,7 +358,7 @@ export type UserCreateInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -378,7 +378,7 @@ export type UserUncheckedCreateInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -397,7 +397,7 @@ export type UserUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -417,7 +417,7 @@ export type UserUncheckedUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -437,7 +437,7 @@ export type UserCreateManyInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -450,7 +450,7 @@ export type UserUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -464,7 +464,7 @@ export type UserUncheckedUpdateManyInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -640,7 +640,7 @@ export type UserCreateWithoutPostsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -659,7 +659,7 @@ export type UserUncheckedCreateWithoutPostsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -693,7 +693,7 @@ export type UserUpdateWithoutPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -712,7 +712,7 @@ export type UserUncheckedUpdateWithoutPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -730,7 +730,7 @@ export type UserCreateWithoutCommentsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -749,7 +749,7 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -783,7 +783,7 @@ export type UserUpdateWithoutCommentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -802,7 +802,7 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -820,7 +820,7 @@ export type UserCreateWithoutLikesInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -839,7 +839,7 @@ export type UserUncheckedCreateWithoutLikesInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -873,7 +873,7 @@ export type UserUpdateWithoutLikesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -892,7 +892,7 @@ export type UserUncheckedUpdateWithoutLikesInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -910,7 +910,7 @@ export type UserCreateWithoutFollowersInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -929,7 +929,7 @@ export type UserUncheckedCreateWithoutFollowersInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -952,7 +952,7 @@ export type UserCreateWithoutFollowingInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -971,7 +971,7 @@ export type UserUncheckedCreateWithoutFollowingInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1005,7 +1005,7 @@ export type UserUpdateWithoutFollowersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1024,7 +1024,7 @@ export type UserUncheckedUpdateWithoutFollowersInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1053,7 +1053,7 @@ export type UserUpdateWithoutFollowingInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1072,7 +1072,7 @@ export type UserUncheckedUpdateWithoutFollowingInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1090,7 +1090,7 @@ export type UserCreateWithoutSavedPostsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1109,7 +1109,7 @@ export type UserUncheckedCreateWithoutSavedPostsInput = {
   email: string
   password: string
   bio?: string | null
-  avatarImage?: string | null
+  avatarImage: string
   isAdmin?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -1143,7 +1143,7 @@ export type UserUpdateWithoutSavedPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1162,7 +1162,7 @@ export type UserUncheckedUpdateWithoutSavedPostsInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  avatarImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarImage?: Prisma.StringFieldUpdateOperationsInput | string
   isAdmin?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1343,7 +1343,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     email: string
     password: string
     bio: string | null
-    avatarImage: string | null
+    avatarImage: string
     isAdmin: boolean
     createdAt: Date
     updatedAt: Date

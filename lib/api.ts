@@ -1,18 +1,70 @@
 // lib/api.ts
 import { prisma } from "@/lib/prisma";
 
-export async function getPosts() {
-  const res = await fetch(`${process.env.API_URL_BASE}/posts/published`);
-  if (!res.ok) throw new Error("Error fetching posts");
-
-  // Sort posts by createdAt in descending order
-  const posts = (await res.json()) as { createdAt: string }[];
-  return posts.sort(
-    (a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)
-  );
+// Get all published posts
+export async function getPublishedPosts() {
+  const res = await prisma.post.findMany({
+    where: {
+      published: true,
+    },
+    include: {
+      author: true,
+      comments: {
+        include: {
+          author: true,
+          likes: true,
+        },
+      },
+      likes: true,
+      categories: true,
+      savedBy: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return res;
 }
+
+// Get a post by its ID
 export async function getPostById(postId: string) {
-  const res = await fetch(`${process.env.API_URL_BASE}/posts/${postId}`);
-  if (!res.ok) throw new Error("Error fetching post by ID");
-  return res.json();
+  const post = await prisma.post.findUnique({
+    where: { id: parseInt(postId) },
+    include: {
+      author: true,
+      comments: true,
+      likes: true,
+      categories: true,
+      savedBy: true,
+    },
+  });
+  if (!post) throw new Error("Error fetching post by ID");
+  return post;
+}
+
+// Search posts by query
+export async function searchPosts(query: string) {
+  const posts = await prisma.post.findMany({
+    where: {
+      OR: [
+        { title: { contains: query, mode: "insensitive" } },
+        { content: { contains: query, mode: "insensitive" } },
+      ],
+      published: true,
+    },
+    include: {
+      author: true,
+      comments: {
+        include: {
+          author: true,
+          likes: true,
+        },
+      },
+      likes: true,
+      categories: true,
+      savedBy: true,
+    },
+  });
+
+  return posts;
 }
