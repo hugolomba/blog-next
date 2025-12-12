@@ -1,8 +1,12 @@
-// import { useAuth } from "../contexts/authContext"
-// import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { auth } from "@/lib/auth";
+import { login } from "@/lib/actions/auth-actions";
+// import LogoutButton from "./LogoutButton";
 
-function Navbar() {
+async function Navbar() {
+  // const session = await auth();
+  const session = false;
+  console.log("Session in Navbar:", session);
   // const { user, logout, loading } = useAuth();
   // const [isOpen, setIsOpen] = useState(false);
   // const menuRef = useRef<HTMLDivElement>(null);
@@ -17,17 +21,21 @@ function Navbar() {
         <h1 className="inline-block">Blog</h1>
       </Link>
 
-      <div className="flex items-center gap-3">
-        <Link href="/login" className="px-4 py-2 text-gray-700">
-          Login
-        </Link>
-        <Link
-          href="/register"
-          className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
-        >
-          Register
-        </Link>
-      </div>
+      {session ? (
+        <div className="flex items-center gap-3">{/* <LogoutButton /> */}</div>
+      ) : (
+        <div className="flex items-center gap-3">
+          <Link href="/login" className="px-4 py-2 text-gray-700">
+            Login
+          </Link>
+          <Link
+            href="/register"
+            className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
+          >
+            Register
+          </Link>
+        </div>
+      )}
 
       {/* User menu */}
     </nav>

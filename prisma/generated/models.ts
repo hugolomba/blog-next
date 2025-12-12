@@ -8,11 +8,9 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/User'
-export type * from './models/Post'
-export type * from './models/Comment'
-export type * from './models/Category'
-export type * from './models/Like'
-export type * from './models/Follower'
-export type * from './models/SavedPost'
-export type * from './commonInputTypes'
+export type * from './models/User.ts'
+export type * from './models/Session.ts'
+export type * from './models/Account.ts'
+export type * from './models/Verification.ts'
+export type * from './models/Post.ts'
+export type * from './commonInputTypes.ts'

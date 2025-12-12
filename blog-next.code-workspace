@@ -11,6 +11,9 @@
     },
     {
       "path": "../nextjs-dashboard"
+    },
+    {
+      "path": "../nextjs-authentication-better-auth/starter-code"
     }
   ],
   "settings": {
@@ -26,6 +29,10 @@
       {
         "folderPath": "/Users/hugo/repos/nextjs/nextjs-dashboard/",
         "color": "foldercolorizer.color_cccc00"
+      },
+      {
+        "folderPath": "/Users/hugo/repos/nextjs/nextjs-authentication-better-auth/",
+        "color": "foldercolorizer.color_ff0099"
       }
     ]
   }

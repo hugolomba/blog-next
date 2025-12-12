@@ -9,15 +9,6 @@ export async function getPublishedPosts() {
     },
     include: {
       author: true,
-      comments: {
-        include: {
-          author: true,
-          likes: true,
-        },
-      },
-      likes: true,
-      categories: true,
-      savedBy: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -32,10 +23,6 @@ export async function getPostById(postId: string) {
     where: { id: parseInt(postId) },
     include: {
       author: true,
-      comments: true,
-      likes: true,
-      categories: true,
-      savedBy: true,
     },
   });
   if (!post) throw new Error("Error fetching post by ID");
@@ -54,15 +41,6 @@ export async function searchPosts(query: string) {
     },
     include: {
       author: true,
-      comments: {
-        include: {
-          author: true,
-          likes: true,
-        },
-      },
-      likes: true,
-      categories: true,
-      savedBy: true,
     },
   });
 

@@ -13,42 +13,32 @@
  * 🟢 You can import this file directly.
  */
 
-import * as Prisma from './internal/prismaNamespaceBrowser'
+import * as Prisma from './internal/prismaNamespaceBrowser.ts'
 export { Prisma }
-export * as $Enums from './enums'
-export * from './enums';
+export * as $Enums from './enums.ts'
+export * from './enums.ts';
 /**
  * Model User
  * 
  */
 export type User = Prisma.UserModel
 /**
+ * Model Session
+ * 
+ */
+export type Session = Prisma.SessionModel
+/**
+ * Model Account
+ * 
+ */
+export type Account = Prisma.AccountModel
+/**
+ * Model Verification
+ * 
+ */
+export type Verification = Prisma.VerificationModel
+/**
  * Model Post
  * 
  */
 export type Post = Prisma.PostModel
-/**
- * Model Comment
- * 
- */
-export type Comment = Prisma.CommentModel
-/**
- * Model Category
- * 
- */
-export type Category = Prisma.CategoryModel
-/**
- * Model Like
- * 
- */
-export type Like = Prisma.LikeModel
-/**
- * Model Follower
- * 
- */
-export type Follower = Prisma.FollowerModel
-/**
- * Model SavedPost
- * 
- */
-export type SavedPost = Prisma.SavedPostModel

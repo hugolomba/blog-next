@@ -2,6 +2,7 @@ import Header from "@/components/Hero";
 import RecentPosts from "@/components/RecentPosts";
 import SearchResults from "@/components/SearchResults";
 import { getPublishedPosts, searchPosts } from "@/lib/api";
+// import { auth } from "@/auth";
 
 export default async function Home({
   searchParams,
@@ -24,6 +25,10 @@ export default async function Home({
   }
 
   console.log("Posts to display on home page:", posts);
+
+  // const session = await auth();
+  const session = null;
+  console.log("User session on home page:", session);
 
   return (
     <main className="container mx-auto px-4">
