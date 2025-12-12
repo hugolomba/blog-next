@@ -1,12 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { auth } from "@/lib/auth";
-import { login } from "@/lib/actions/auth-actions";
-// import LogoutButton from "./LogoutButton";
+import LogoutButton from "./LogoutButton";
+// import { login } from "@/lib/actions/auth-actions";
 
-async function Navbar() {
-  // const session = await auth();
-  const session = false;
-  console.log("Session in Navbar:", session);
+// from docs to use session. The other import type is more for client side
+type Session = typeof auth.$Infer.Session;
+
+// import LogoutButton from "./LogoutButton";
+function Navbar({ session }: { session: Session | null }) {
   // const { user, logout, loading } = useAuth();
   // const [isOpen, setIsOpen] = useState(false);
   // const menuRef = useRef<HTMLDivElement>(null);
@@ -22,14 +25,16 @@ async function Navbar() {
       </Link>
 
       {session ? (
-        <div className="flex items-center gap-3">{/* <LogoutButton /> */}</div>
+        <div className="flex items-center gap-3">
+          <LogoutButton />
+        </div>
       ) : (
         <div className="flex items-center gap-3">
-          <Link href="/login" className="px-4 py-2 text-gray-700">
+          <Link href="/auth" className="px-4 py-2 text-gray-700">
             Login
           </Link>
           <Link
-            href="/register"
+            href="/auth"
             className="px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
           >
             Register

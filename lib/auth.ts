@@ -11,12 +11,12 @@ export const auth = betterAuth({
   },
   socialProviders: {
     github: {
-      clientId: process.env.AUTH_GITHUB_ID!,
-      clientSecret: process.env.AUTH_GITHUB_SECRET!,
+      clientId: process.env.BETTER_AUTH_GITHUB_ID!,
+      clientSecret: process.env.BETTER_AUTH_GITHUB_SECRET!,
     },
     google: {
-      clientId: process.env.AUTH_GOOGLE_ID!,
-      clientSecret: process.env.AUTH_GOOGLE_SECRET!,
+      clientId: process.env.BETTER_AUTH_GOOGLE_ID!,
+      clientSecret: process.env.BETTER_AUTH_GOOGLE_SECRET!,
     },
   },
   //   nextCookies should be the last plugin
