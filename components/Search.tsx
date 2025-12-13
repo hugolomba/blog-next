@@ -1,9 +1,38 @@
 "use client";
-// import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { FiSearch } from "react-icons/fi";
-// import { SearchContext } from "../contexts/SearchContext";
+
+import { Input } from "@heroui/react";
+
+export const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      aria-hidden="true"
+      fill="none"
+      focusable="false"
+      height="1em"
+      role="presentation"
+      viewBox="0 0 24 24"
+      width="1em"
+      {...props}
+    >
+      <path
+        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+      <path
+        d="M22 22L20 20"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+      />
+    </svg>
+  );
+};
 
 export default function Search() {
   const [query, setQuery] = useState("");
@@ -19,17 +48,42 @@ export default function Search() {
       className="w-full md:w-1/2 mx-auto flex items-center relative mt-1.5"
       onSubmit={handleSearch}
     >
-      <label htmlFor="search" className="sr-only">
-        Search Articles
-      </label>
-      <FiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" />
-      <input
+      <Input
+        isClearable
+        classNames={{
+          label: "text-black/50 dark:text-white/90",
+          input: [
+            "bg-transparent",
+            "text-black/90 dark:text-white/90",
+            "placeholder:text-default-700/50 dark:placeholder:text-white/60",
+          ],
+          innerWrapper: "bg-transparent",
+          inputWrapper: [
+            "shadow-sm",
+            "bg-default-200/50",
+            "dark:bg-default/60",
+            "backdrop-blur-xl",
+            "backdrop-saturate-200",
+            "hover:bg-default-200/70",
+            "dark:hover:bg-default/70",
+            "group-data-[focus=true]:bg-default-200/50",
+            "dark:group-data-[focus=true]:bg-default/60",
+            "cursor-text!",
+          ],
+        }}
+        label="Search"
+        // placeholder="Type to search..."
+        labelPlacement="inside"
+        radius="lg"
         type="text"
         id="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for articles or authors..."
-        className="w-full pl-12 pr-4 py-3 rounded-xl bg-blue-50 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onClear={() => setQuery("")}
+        placeholder=" for articles or authors..."
+        startContent={
+          <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none shrink-0" />
+        }
       />
     </form>
   );

@@ -1,10 +1,6 @@
-// import type { Post } from "@/types/types";
 "use client";
-// import Link from "next/link";
 import { Link } from "@heroui/link";
 import Image from "next/image";
-import { FaHeart, FaRegHeart, FaRegComment } from "react-icons/fa";
-import { FaBookmark, FaRegBookmark } from "react-icons/fa";
 import type { Prisma } from "@/prisma/generated/client";
 
 import { Card, CardHeader, CardBody, CardFooter, Avatar } from "@heroui/react";
