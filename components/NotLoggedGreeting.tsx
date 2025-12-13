@@ -5,7 +5,9 @@ import Link from "next/link";
 export default function NotLoggedGreeting() {
   return (
     <div className="text-center py-8 px-4">
-      <h2 className="text-3xl font-bold mb-3">Start your blog today ✨</h2>
+      <h2 className="text-3xl font-bold mb-3 text-foreground">
+        Start your blog today ✨
+      </h2>
       <p className="text-gray-600 mb-5">
         Create your space, share ideas, and inspire people all over the world.
       </p>

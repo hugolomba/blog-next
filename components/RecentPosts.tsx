@@ -19,7 +19,7 @@ export default function RecentPosts({ publishedPosts }: RecentPostsProps) {
   return (
     <section className="mx-5 md:m-0">
       <h2 className="text-xl font-poppins text-center">Recent Posts</h2>
-      <ul className="mt-4 md:flex md:flex-wrap md:gap-1 md:justify-around">
+      <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4">
         {publishedPosts.length > 0 ? (
           publishedPosts.map((post) => (
             // <p>{post.title}</p>
@@ -29,7 +29,7 @@ export default function RecentPosts({ publishedPosts }: RecentPostsProps) {
           // <Loading /> <p>No posts available.</p>
           <p>No posts available.</p>
         )}
-      </ul>
+      </div>
     </section>
   );
 }
