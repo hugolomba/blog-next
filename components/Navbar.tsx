@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import LogoutButton from "./LogoutButton";
+import { Button } from "@heroui/button";
 // import { login } from "@/lib/actions/auth-actions";
 
 // from docs to use session. The other import type is more for client side
@@ -39,6 +40,7 @@ function Navbar({ session }: { session: Session | null }) {
           >
             Register
           </Link>
+          <Button color="default">Button</Button>
         </div>
       )}
 
