@@ -18,6 +18,7 @@
     "@heroui/button": "^2.2.27",
     "@heroui/navbar": "^2.2.25",
     "@heroui/react": "^2.8.5",
+    "@heroui/switch": "^2.2.24",
     "@heroui/system": "2.4.23",
     "@heroui/theme": "2.4.23",
     "@prisma/adapter-pg": "^7.1.0",
