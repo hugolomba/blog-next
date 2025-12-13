@@ -4,11 +4,14 @@ import { prisma } from "@/lib/prisma";
 // Get all published posts
 export async function getPublishedPosts() {
   const res = await prisma.post.findMany({
-    where: {
-      published: true,
-    },
+    where: {},
     include: {
       author: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
     },
     orderBy: {
       createdAt: "desc",
@@ -23,6 +26,7 @@ export async function getPostById(postId: string) {
     where: { id: parseInt(postId) },
     include: {
       author: true,
+      comments: true,
     },
   });
   if (!post) throw new Error("Error fetching post by ID");
@@ -37,10 +41,14 @@ export async function searchPosts(query: string) {
         { title: { contains: query, mode: "insensitive" } },
         { content: { contains: query, mode: "insensitive" } },
       ],
-      published: true,
     },
     include: {
       author: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
     },
   });
 

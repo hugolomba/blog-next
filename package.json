@@ -17,6 +17,7 @@
     "@auth/prisma-adapter": "^2.11.1",
     "@prisma/adapter-pg": "^7.1.0",
     "@prisma/client": "^7.1.0",
+    "bcrypt": "^6.0.0",
     "better-auth": "^1.4.6",
     "dotenv": "^17.2.3",
     "next": "16.0.7",
@@ -38,6 +39,7 @@
     "prisma": "^7.1.0",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }
