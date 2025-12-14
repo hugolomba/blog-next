@@ -8,25 +8,27 @@ export default function AuthorDetails({
   author: Prisma.UserGetPayload<{
     select: {
       name: true;
-      surname: true;
-      avatarImage: true;
+      email: true;
+      image: true;
       bio: true;
     };
   }>;
 }) {
   return (
-    <div className="flex flex-col gap-1 items-left mt-8 p-4 border-t border-gray-300 border-b">
+    <div className="w-full flex flex-row gap-1 items-center mt-8 p-4 border-t border-b">
       <Image
-        src={author.avatarImage}
+        src={author.image || ""}
         alt={author.name}
         width={60}
         height={60}
         className="inline-block w-15 h-15 rounded-full mr-2 object-cover"
       />
-      <h4 className="text-xl text-gray-600 font-semibold mt-2">
-        Written by {author.name} {author.surname}
-      </h4>
-      <p className="text-gray-500">{author.bio}</p>
+      <div>
+        <h4 className="text-xl text-foreground font-semibold mt-2">
+          Written by {author.name}
+        </h4>
+        <p className="text-foreground/60">{author.bio}</p>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,4 @@
 import type { Prisma } from "@/prisma/generated/client";
-import { FaHeart, FaRegHeart, FaRegBookmark, FaBookmark } from "react-icons/fa";
-import { MdDelete, MdEdit } from "react-icons/md";
 import Image from "next/image";
 import AuthorDetails from "@/components/AuthorDetails";
 
@@ -8,13 +6,7 @@ export default function Article({
   post,
 }: {
   post: Prisma.PostGetPayload<{
-    include: {
-      author: true;
-      comments: true;
-      likes: true;
-      categories: true;
-      savedBy: true;
-    };
+    include: { author: true };
   }>;
 }) {
   function timeAgo(date: Date) {
@@ -42,46 +34,34 @@ export default function Article({
   }
 
   return (
-    <article className="relative p-2.5">
+    <article
+      className="relative p-2.5 flex flex-col items-center w-full max-w-8xl
+"
+    >
+      <div className="mb-4 flex flex-col items-center text-center">
+        <h2 className="text-4xl font-bold">{post.title}</h2>
+        {/* <div className="text-gray-500 text-sm flex gap-2 justify-items-start"> */}
+        <span className="text-foreground/40 text-center">
+          {timeAgo(post.createdAt)}
+        </span>
+        {/* </div> */}
+      </div>
+
       <Image
-        src={post.coverImage}
+        src={post.coverImage || ""}
         alt="article cover image"
         width={800}
         height={400}
-        className="w-full h-48 object-cover"
+        className=" object-cover"
         loading="eager"
       />
 
-      <div className="flex flex-col ">
-        <div className="flex justify-between mt-4">
-          <h2 className="text-3xl font-bold">{post.title}</h2>
-
-          {/* <div className="text-2xl text-gray-600 flex items-center gap-4 cursor-pointer">
-                    {handleLikeIcon()}
-                    {handleBookmarkIcon()}
-                    
-                    </div> */}
-        </div>
-        <div className="text-gray-500 text-sm flex gap-2 align-center mt-1">
-          {/* <img src={post.author.avatarImage} alt={post.author.name} className="inline-block w-4.5 h-4.5 rounded-full" /> */}
-
-          {/* <span className="font-bold">
-            by{" "}
-            {post.author.name === user?.name
-              ? "You"
-              : `${post.author.name} ${post.author.surname}`}{" "}
-          </span> */}
-          {/* {post.author.id === user?.id ? (<span>Editar</span> "Apagar")} */}
-          <span className="text-gray-500">{timeAgo(post.createdAt)}</span>
-        </div>
-      </div>
+      <AuthorDetails author={post.author} />
 
       <div
         className="prose prose-base max-w-none mt-6"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
-
-      <AuthorDetails author={post.author} />
     </article>
   );
 }

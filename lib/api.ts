@@ -26,7 +26,11 @@ export async function getPostById(postId: string) {
     where: { id: parseInt(postId) },
     include: {
       author: true,
-      comments: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
     },
   });
   if (!post) throw new Error("Error fetching post by ID");

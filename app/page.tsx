@@ -12,8 +12,6 @@ export default async function Home({
   const { q } = await searchParams;
   const query = Array.isArray(q) ? q[0] : q; // take the first element if it's an array
 
-  console.log("Search query on home page:", query);
-
   let posts;
 
   if (query) {
@@ -23,12 +21,6 @@ export default async function Home({
     // fetch all posts
     posts = await getPublishedPosts();
   }
-
-  console.log("Posts to display on home page:", posts);
-
-  // const session = await auth();
-  const session = null;
-  console.log("User session on home page:", session);
 
   return (
     <main className="container mx-auto px-4">

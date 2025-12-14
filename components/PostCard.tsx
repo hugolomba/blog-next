@@ -39,7 +39,7 @@ export default function PostCard({
           <h4 className="font-bold text-large">Frontend Radio</h4> */}
         </CardHeader>
         <CardBody
-          className="overflow-visible py-2"
+          className="py-2 line-clamp-2"
           dangerouslySetInnerHTML={{ __html: post.content }}
         >
           {/* <div

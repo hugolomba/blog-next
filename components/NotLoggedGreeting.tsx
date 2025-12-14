@@ -1,5 +1,4 @@
 // import { Link } from "react-router-dom";
-import Search from "./Search";
 import Link from "next/link";
 
 export default function NotLoggedGreeting() {
@@ -8,16 +7,16 @@ export default function NotLoggedGreeting() {
       <h2 className="text-3xl font-bold mb-3 text-foreground">
         Start your blog today ✨
       </h2>
-      <p className="text-gray-600 mb-5">
+      <p className="text-foreground mb-5">
         Create your space, share ideas, and inspire people all over the world.
       </p>
       <Link
         href="/register"
-        className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
+        className="px-4 py-2 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
       >
         Create your account now
       </Link>
-      <h3 className="text-center text-gray-600 mt-8">
+      <h3 className="text-center text-foreground mt-8">
         Feel free to explore and enjoy reading!
       </h3>
     </div>

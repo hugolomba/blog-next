@@ -37,10 +37,14 @@ type Session = typeof auth.$Infer.Session;
 
 export default function App({ session }: { session: Session | null }) {
   return (
-    <Navbar isBordered shouldHideOnScroll>
+    <Navbar isBordered shouldHideOnScroll maxWidth="xl">
       <NavbarBrand>
         {/* <AcmeLogo /> */}
-        <p className="font-bold text-inherit">BLOG</p>
+        <Link href="/" className="flex items-center gap-2">
+          <p className="font-bold text-2xl bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 hover:scale-105 transition bg-clip-text text-transparent">
+            BLOG
+          </p>
+        </Link>
       </NavbarBrand>
 
       <NavbarContent justify="end">
@@ -63,7 +67,13 @@ export default function App({ session }: { session: Session | null }) {
             <NavbarWithSession session={session} />
           ) : (
             <div className="flex items-center gap-3">
-              <Button as={Link} color="default" href="/auth" variant="solid">
+              <Button
+                as={Link}
+                color="default"
+                href="/auth"
+                variant="solid"
+                className="bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
+              >
                 Sign Up / Login
               </Button>
             </div>

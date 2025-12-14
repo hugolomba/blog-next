@@ -21,12 +21,8 @@ export default function RecentPosts({ publishedPosts }: RecentPostsProps) {
       <h2 className="text-xl font-poppins text-center">Recent Posts</h2>
       <div className="gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4">
         {publishedPosts.length > 0 ? (
-          publishedPosts.map((post) => (
-            // <p>{post.title}</p>
-            <PostCard key={post.id} post={post} />
-          ))
+          publishedPosts.map((post) => <PostCard key={post.id} post={post} />)
         ) : (
-          // <Loading /> <p>No posts available.</p>
           <p>No posts available.</p>
         )}
       </div>

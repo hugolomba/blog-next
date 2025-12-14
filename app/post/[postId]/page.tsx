@@ -12,6 +12,9 @@ import Article from "@/components/Article";
 // import type { Post } from "@/types/types";
 
 import { getPostById } from "@/lib/api";
+import CommentCard from "@/components/CommentCard";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth";
 
 // export default function PostDetailPage( searchParams: { [key: string]: string } ) {
 
@@ -78,14 +81,39 @@ export default async function PostDetailPage({
   params: { postId: string };
 }) {
   const { postId } = await params;
-
   const post = await getPostById(postId);
   console.log("Post fetched for PostDetailPage:", post);
 
+  // session to use in CommentCard to check comment author and give options to delete if author is the same as logged in user
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
   return (
-    <div className="mt-2">
+    <div className="mt-5 lg:mt-10 lg:mx-40 xs:mx-5 flex flex-col justify-center">
       <Article post={post} />
       {/* <Comments comments={post.comments} /> */}
+      <div className="mt-8 p-4">
+        <h3 className="text-xl font-semibold">
+          Comments ({post.comments.length})
+        </h3>
+        <div className="flex flex-col gap-4 mt-4">
+          {post.comments
+            .sort(
+              (a, b) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+            )
+            .map((comment) => (
+              <CommentCard
+                key={comment.id}
+                comment={comment}
+                user={session?.user}
+              />
+            ))}
+        </div>
+      </div>
     </div>
   );
 }

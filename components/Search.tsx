@@ -71,16 +71,12 @@ export default function Search() {
             "cursor-text!",
           ],
         }}
-        label="Search"
-        // placeholder="Type to search..."
-        labelPlacement="inside"
-        radius="lg"
+        key={"outside"}
         type="text"
-        id="search"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onClear={() => setQuery("")}
-        placeholder=" for articles or authors..."
+        placeholder="Search for articles or authors..."
         startContent={
           <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none shrink-0" />
         }
