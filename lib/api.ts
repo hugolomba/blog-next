@@ -55,6 +55,23 @@ export async function searchPosts(query: string) {
       },
     },
   });
+  return posts;
+}
 
+// Seacrh by author ID
+export async function getPostsByAuthorId(authorId: string) {
+  const posts = await prisma.post.findMany({
+    where: {
+      authorId: authorId,
+    },
+    include: {
+      author: true,
+      comments: {
+        include: {
+          author: true,
+        },
+      },
+    },
+  });
   return posts;
 }

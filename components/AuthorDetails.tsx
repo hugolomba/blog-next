@@ -1,12 +1,14 @@
 import type { Prisma } from "@/prisma/generated/client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function AuthorDetails({
   author,
 }: {
   author: Prisma.UserGetPayload<{
     select: {
+      id: true;
       name: true;
       email: true;
       image: true;
@@ -15,7 +17,10 @@ export default function AuthorDetails({
   }>;
 }) {
   return (
-    <div className="w-full flex flex-row gap-1 items-center mt-8 p-4 border-t border-b">
+    <Link
+      href={`/user/${author.id}`}
+      className="w-full flex flex-col gap-1 items-center  p-4 border-b"
+    >
       <Image
         src={author.image || ""}
         alt={author.name}
@@ -23,12 +28,12 @@ export default function AuthorDetails({
         height={60}
         className="inline-block w-15 h-15 rounded-full mr-2 object-cover"
       />
-      <div>
+      <div className="text-center">
         <h4 className="text-xl text-foreground font-semibold mt-2">
-          Written by {author.name}
+          About {author.name}
         </h4>
         <p className="text-foreground/60">{author.bio}</p>
       </div>
-    </div>
+    </Link>
   );
 }

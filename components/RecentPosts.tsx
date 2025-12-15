@@ -7,12 +7,13 @@ interface RecentPostsProps {
   publishedPosts: Prisma.PostGetPayload<{
     include: {
       author: true;
-      comments: true;
-      likes: true;
-      categories: true;
-      savedBy: true;
+      comments: {
+        include: {
+          author: true;
+        };
+      };
     };
-  }>[];
+  }>;
 }
 
 export default function RecentPosts({ publishedPosts }: RecentPostsProps) {

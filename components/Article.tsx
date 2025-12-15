@@ -1,14 +1,22 @@
 import type { Prisma } from "@/prisma/generated/client";
 import Image from "next/image";
 import AuthorDetails from "@/components/AuthorDetails";
+import CommentCard from "./CommentCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-export default function Article({
+export default async function Article({
   post,
 }: {
   post: Prisma.PostGetPayload<{
-    include: { author: true };
+    include: { author: true; comments: { include: { author: true } } };
   }>;
 }) {
+  // session to use in CommentCard to check comment author and give options to delete if author is the same as logged in user
+
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
   function timeAgo(date: Date) {
     // const date = new Date(dateString);
     const now = new Date();
@@ -35,33 +43,58 @@ export default function Article({
 
   return (
     <article
-      className="relative p-2.5 flex flex-col items-center w-full max-w-8xl
+      className="relative p-2.5 flex flex-col items-center w-full max-w-8xl col-span-3
 "
     >
       <div className="mb-4 flex flex-col items-center text-center">
         <h2 className="text-4xl font-bold">{post.title}</h2>
         {/* <div className="text-gray-500 text-sm flex gap-2 justify-items-start"> */}
         <span className="text-foreground/40 text-center">
-          {timeAgo(post.createdAt)}
+          written by {post.author.name} - {timeAgo(post.createdAt)}
         </span>
         {/* </div> */}
       </div>
 
-      <Image
-        src={post.coverImage || ""}
-        alt="article cover image"
-        width={800}
-        height={400}
-        className=" object-cover"
-        loading="eager"
-      />
+      <div className="relative w-full max-w-4xl aspect-2/1 overflow-hidden rounded-lg">
+        <Image
+          src={post.coverImage || ""}
+          alt="article cover image"
+          fill
+          className="object-cover"
+          loading="eager"
+        />
+      </div>
 
-      <AuthorDetails author={post.author} />
+      {/* <h4 className="text-xl text-foreground font-semibold mt-2">
+        Written by {post.author.name}
+      </h4> */}
+      {/* <AuthorDetails author={post.author} /> */}
 
       <div
         className="prose prose-base max-w-none mt-6"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+
+      <div className="w-full mt-8 p-4">
+        <h3 className="text-xl font-semibold">
+          Comments ({post.comments.length})
+        </h3>
+        <div className="flex flex-col gap-4 mt-4">
+          {post.comments
+            .sort(
+              (a, b) =>
+                new Date(b.createdAt).getTime() -
+                new Date(a.createdAt).getTime()
+            )
+            .map((comment) => (
+              <CommentCard
+                key={comment.id}
+                comment={comment}
+                user={session?.user}
+              />
+            ))}
+        </div>
+      </div>
     </article>
   );
 }
