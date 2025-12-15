@@ -45,8 +45,6 @@ export default function AuthClientPage() {
     setIsLoading(true);
     setError("");
 
-    console.log({ email, password, name, isSignIn });
-
     try {
       if (isSignIn) {
         const result = await signIn(email, password);

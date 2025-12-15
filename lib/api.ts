@@ -75,3 +75,30 @@ export async function getPostsByAuthorId(authorId: string) {
   });
   return posts;
 }
+
+// Get user by ID
+export async function getUserById(userId: string) {
+  const user = await prisma.user.findUnique({
+    where: { id: userId },
+    include: {
+      posts: {
+        include: {
+          author: true,
+          comments: {
+            include: {
+              author: true,
+            },
+          },
+        },
+      },
+      comments: {
+        include: {
+          author: true,
+        },
+      },
+    },
+  });
+
+  if (!user) throw new Error("Error fetching user by ID");
+  return user;
+}

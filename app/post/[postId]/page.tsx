@@ -83,7 +83,6 @@ export default async function PostDetailPage({
 }) {
   const { postId } = await params;
   const post = await getPostById(postId);
-  console.log("Post fetched for PostDetailPage:", post);
 
   return (
     <div className="mt-5 lg:mt-10 lg:mx-4 xs:mx-5 md:grid md:grid-cols-4 gap-4">

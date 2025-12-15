@@ -11,8 +11,6 @@ export default async function Header() {
     headers: await headers(),
   });
 
-  console.log("Header session:", session);
-
   return (
     <section className="text-gray-800 mb-4 rounded-xl ">
       {session ? (

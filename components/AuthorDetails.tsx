@@ -19,7 +19,7 @@ export default function AuthorDetails({
   return (
     <Link
       href={`/user/${author.id}`}
-      className="w-full flex flex-col gap-1 items-center  p-4 border-b"
+      className="w-full flex flex-col gap-1 items-center  p-4 "
     >
       <Image
         src={author.image || ""}

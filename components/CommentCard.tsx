@@ -2,9 +2,9 @@
 import { FaRegTrashAlt } from "react-icons/fa";
 import type { Prisma } from "@/prisma/generated/client";
 import type { JSX } from "react";
-import Image from "next/image";
 
-import { Avatar } from "@heroui/react";
+import { Avatar, Card, CardBody } from "@heroui/react";
+import Link from "next/link";
 
 export default function CommentCard({
   comment,
@@ -17,32 +17,35 @@ export default function CommentCard({
     id: string;
   };
 }): JSX.Element {
-  console.log("Comment author ID:", comment.author.id, "User ID:", user?.id);
-  console.log("user:", user);
   return (
-    <div key={comment.id} className="flex flex-col border-b  pb-2 relative">
-      <div className="text-foreground font-medium flex gap-2 items-center">
-        <Avatar src={comment.author.image || ""} alt={comment.author.name} />
-        <h4 className="text-lg font-semibold inline-block">
-          {comment.author.name}
-        </h4>
-      </div>
-
-      <p className="text-foreground mt-4">{comment.content}</p>
-      <div className="text-foreground/40 text-sm flex justify-between mt-2 mb-2">
-        <span className="">
-          Posted on: {new Date(comment.createdAt).toLocaleDateString()}
-        </span>
-      </div>
-
-      {comment.author.id === user?.id && (
-        <span
-          //   onClick={() => handleDeleteComment(comment.id)}
-          className="text-gray-500 text-lg absolute right-0 top-0 active:text-red-800 hover:text-red-600"
+    <Card key={comment.id} className="flex flex-col border-b  pb-2 relative">
+      <CardBody>
+        <Link
+          href={`/user/${comment.authorId}`}
+          className="text-foreground font-medium flex gap-2 items-center"
         >
-          <FaRegTrashAlt />
-        </span>
-      )}
-    </div>
+          <Avatar src={comment.author.image || ""} alt={comment.author.name} />
+          <h4 className="text-lg font-semibold inline-block">
+            {comment.author.name}
+          </h4>
+        </Link>
+
+        <p className="text-foreground mt-4">{comment.content}</p>
+        <div className="text-foreground/40 text-sm flex justify-between mt-2 mb-2">
+          <span className="">
+            Posted on: {new Date(comment.createdAt).toLocaleDateString()}
+          </span>
+        </div>
+
+        {comment.author.id === user?.id && (
+          <span
+            //   onClick={() => handleDeleteComment(comment.id)}
+            className="text-gray-500 text-lg absolute right-5 top-5 active:text-red-800 hover:text-red-600"
+          >
+            <FaRegTrashAlt />
+          </span>
+        )}
+      </CardBody>
+    </Card>
   );
 }

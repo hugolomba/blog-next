@@ -5,8 +5,6 @@ import AuthorDetails from "./AuthorDetails";
 export async function SideBar({ authorId }: { authorId: string }) {
   const postsByAuthor = await getPostsByAuthorId(authorId);
 
-  console.log("Posts by author in SideBar:", postsByAuthor);
-
   return (
     <div className="p-4 border-l border-gray-200 flex flex-col mt-6">
       <AuthorDetails author={postsByAuthor[0]?.author} />

@@ -3,8 +3,6 @@ import Link from "next/link";
 type Session = typeof auth.$Infer.Session;
 
 export default function LoggedGreetings({ user }: { user: Session["user"] }) {
-  console.log("LoggedGreetings session:", user);
-
   return (
     <div className="text-center py-12 px-4  rounded-2xl">
       <h2 className="text-3xl font-bold mb-3 text-foreground ">
