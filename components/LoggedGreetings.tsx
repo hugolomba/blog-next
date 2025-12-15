@@ -12,16 +12,16 @@ export default function LoggedGreetings({ user }: { user: Session["user"] }) {
       <div className="flex flex-col items-center justify-center gap-4 ">
         <Link
           href="/post/create"
-          className="px-4 py-2 bg-white text-blue-700 font-semibold rounded-xl shadow hover:scale-105 transition"
+          className="px-4 py-2 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
         >
           Create new post
         </Link>
-        <Link
+        {/* <Link
           href="/dashboard"
-          className="px-4 py-2 bg-white text-blue-700 font-semibold rounded-xl shadow hover:scale-105 transition"
+          className="px-4 py-2 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
         >
           Dashboard
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

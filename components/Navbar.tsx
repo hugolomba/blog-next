@@ -128,9 +128,11 @@ export function NavbarWithSession({ session }: { session: Session }) {
         <DropdownMenu aria-label="Profile Actions" variant="flat">
           <DropdownItem key="profile" className="h-14 gap-2">
             <p className="font-semibold">Signed in as</p>
-            <p className="font-semibold">{session.user?.email || ""}</p>
+            <p className="font-semibold">{session.user?.name || ""}</p>
           </DropdownItem>
-          <DropdownItem key="settings">My Settings</DropdownItem>
+          <DropdownItem key="settings">
+            <Link href={`/user/${session.user?.id}`}>My Profile</Link>
+          </DropdownItem>
           <DropdownItem key="logout" color="danger" onPress={() => signOut()}>
             Log Out
           </DropdownItem>

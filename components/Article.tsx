@@ -1,9 +1,10 @@
 import type { Prisma } from "@/prisma/generated/client";
 import Image from "next/image";
-import AuthorDetails from "@/components/AuthorDetails";
 import CommentCard from "./CommentCard";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import NewComment from "./NewComment";
+import Link from "next/link";
 
 export default async function Article({
   post,
@@ -95,6 +96,24 @@ export default async function Article({
             ))}
         </div>
       </div>
+
+      {session?.user ? (
+        <NewComment
+          postId={post.id}
+          userId={session.user.id}
+          userImage={session.user.image}
+        />
+      ) : (
+        <div className="w-full flex items-center flex-col text-center p-4  bg-foreground/10 space-y-2 rounded-2xl m-2">
+          <h5 className="text-xl">Please log in or register to comment.</h5>
+          <Link
+            href="/auth"
+            className="py-2 px-4 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
+          >
+            Login
+          </Link>
+        </div>
+      )}
     </article>
   );
 }

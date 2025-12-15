@@ -12,7 +12,7 @@ export default async function UserPage({
   const user = await getUserById(userId);
 
   return (
-    <div>
+    <div className="container mx-auto max-w-7xl">
       <AuthorDetails author={user} />
       <UserDetails user={user} />
     </div>

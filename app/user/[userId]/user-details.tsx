@@ -31,15 +31,22 @@ export default function UserDetails({
       <div className="flex justify-center w-full flex-col px-4">
         <Tabs aria-label="Options" fullWidth>
           <Tab key="articles" title="Articles" className="flex flex-col gap-4">
-            {user.posts &&
-              user.posts.map((post) => <PostCard key={post.id} post={post} />)}
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:gap-6">
+              {user.posts &&
+                user.posts.map((post) => (
+                  <PostCard key={post.id} post={post} />
+                ))}
+            </div>
           </Tab>
-          <Tab key="comments" title="Comments" className="flex flex-col gap-4">
-            {user.comments.map((comment) => (
-              <Link key={comment.id} href={`/post/${comment.postId}`}>
-                <CommentCard key={comment.id} comment={comment} />
-              </Link>
-            ))}
+
+          <Tab key="comments" title="Comments">
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-6">
+              {user.comments.map((comment) => (
+                <Link key={comment.id} href={`/post/${comment.postId}`}>
+                  <CommentCard key={comment.id} comment={comment} />
+                </Link>
+              ))}
+            </div>
           </Tab>
           <Tab key="savedPosts" title="Saved Posts">
             <Card>
