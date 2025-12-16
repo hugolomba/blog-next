@@ -1,11 +1,16 @@
 "use client";
 import { deletePost } from "@/lib/actions/post-actions";
+import { useRouter } from "next/dist/client/components/navigation";
+import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
 import { MdDelete, MdEdit } from "react-icons/md";
 
 export default function EditDeleteButtons({ postId }: { postId: number }) {
+  const router = useRouter();
+
   const handleDelete = () => {
     deletePost(postId);
+    router.push("/");
   };
 
   return (
@@ -19,7 +24,7 @@ export default function EditDeleteButtons({ postId }: { postId: number }) {
       </Link>
       <button
         // onClick={() => setIsDialogOpen(true)}
-        onClick={() => handleDelete}
+        onClick={() => handleDelete()}
         className="cursor-pointer bg-red-500 text-white rounded-lg hover:bg-red-600 flex flex-row items-center gap-1 px-2 py-1"
       >
         Delete <MdDelete />

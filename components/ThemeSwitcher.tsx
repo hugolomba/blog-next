@@ -21,8 +21,6 @@ export const ThemeSwitcher = () => {
   );
 };
 
-// import { Switch } from "@heroui/react";
-
 export const MoonIcon = (props: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
