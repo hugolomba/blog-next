@@ -11,7 +11,7 @@ export default function NotLoggedGreeting() {
         Create your space, share ideas, and inspire people all over the world.
       </p>
       <Link
-        href="/register"
+        href="/auth"
         className="px-4 py-2 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
       >
         Create your account now

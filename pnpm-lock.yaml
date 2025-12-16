@@ -53,6 +53,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.2.4
         version: 1.2.4(@types/react@19.2.7)(react@19.2.0)
+      '@tinymce/tinymce-react':
+        specifier: ^6.3.0
+        version: 6.3.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       bcrypt:
         specifier: ^6.0.0
         version: 6.0.0
@@ -2239,6 +2242,16 @@ packages:
 
   '@tanstack/virtual-core@3.11.3':
     resolution: {integrity: sha512-v2mrNSnMwnPJtcVqNvV0c5roGCBqeogN8jDtgtuHCphdwBasOZ17x8UV8qpHUh+u0MLfX43c0uUHKje0s+Zb0w==}
+
+  '@tinymce/tinymce-react@6.3.0':
+    resolution: {integrity: sha512-E++xnn0XzDzpKr40jno2Kj7umfAE6XfINZULEBBeNjTMvbACWzA6CjiR6V8eTDc9yVmdVhIPqVzV4PqD5TZ/4g==}
+    peerDependencies:
+      react: ^19.0.0 || ^18.0.0 || ^17.0.1 || ^16.7.0
+      react-dom: ^19.0.0 || ^18.0.0 || ^17.0.1 || ^16.7.0
+      tinymce: ^8.0.0 || ^7.0.0 || ^6.0.0 || ^5.5.1
+    peerDependenciesMeta:
+      tinymce:
+        optional: true
 
   '@tsconfig/node10@1.0.12':
     resolution: {integrity: sha512-UCYBaeFvM11aU2y3YPZ//O5Rhj+xKyzy7mvcIoAjASbigy8mHMryP5cK7dgjlz2hWxh1g5pLw084E0a/wlUSFQ==}
@@ -7095,6 +7108,12 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
 
   '@tanstack/virtual-core@3.11.3': {}
+
+  '@tinymce/tinymce-react@6.3.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@tsconfig/node10@1.0.12': {}
 

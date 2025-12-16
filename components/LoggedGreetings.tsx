@@ -11,7 +11,7 @@ export default function LoggedGreetings({ user }: { user: Session["user"] }) {
       <p className="mb-6 text-foreground">Ready to share your ideas today?</p>
       <div className="flex flex-col items-center justify-center gap-4 ">
         <Link
-          href="/post/create"
+          href="/post/new"
           className="px-4 py-2 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
         >
           Create new post

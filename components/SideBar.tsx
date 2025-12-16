@@ -11,7 +11,7 @@ export async function SideBar({ authorId }: { authorId: string }) {
       <h2 className="text-lg text-center mt-4 font-semibold mb-4 uppercase">
         More from {postsByAuthor[0]?.author.name}
       </h2>
-      <div className="flex md:flex-col gap-4">
+      <div className="flex md:flex-col gap-4 flex-wrap">
         {postsByAuthor?.slice(0, 5).map((post) => (
           <PostCard key={post.id} post={post} cardType="sidebar" />
         ))}

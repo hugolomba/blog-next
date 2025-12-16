@@ -5,6 +5,9 @@ import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import NewComment from "./NewComment";
 import Link from "next/link";
+import { MdDelete, MdEdit } from "react-icons/md";
+import { deletePost } from "@/lib/actions/post-actions";
+import EditDeleteButtons from "@/app/post/[postId]/edit-delete";
 
 export default async function Article({
   post,
@@ -49,11 +52,9 @@ export default async function Article({
     >
       <div className="mb-4 flex flex-col items-center text-center">
         <h2 className="text-4xl font-bold">{post.title}</h2>
-        {/* <div className="text-gray-500 text-sm flex gap-2 justify-items-start"> */}
         <span className="text-foreground/40 text-center">
           written by {post.author.name} - {timeAgo(post.createdAt)}
         </span>
-        {/* </div> */}
       </div>
 
       <div className="relative w-full max-w-4xl aspect-2/1 overflow-hidden rounded-lg">
@@ -66,10 +67,9 @@ export default async function Article({
         />
       </div>
 
-      {/* <h4 className="text-xl text-foreground font-semibold mt-2">
-        Written by {post.author.name}
-      </h4> */}
-      {/* <AuthorDetails author={post.author} /> */}
+      {post.author.id === session?.user?.id && (
+        <EditDeleteButtons postId={post.id} />
+      )}
 
       <div
         className="prose prose-base max-w-none mt-6"
@@ -118,24 +118,38 @@ export default async function Article({
   );
 }
 
-// function ConfirmationDialog({ isOpen, onClose, onConfirm }: { isOpen: boolean; onClose: () => void; onConfirm: () => void }) {
-//     if (!isOpen) return null;
+// function ConfirmationDialog({
+//   isOpen,
+//   onClose,
+//   onConfirm,
+// }: {
+//   isOpen: boolean;
+//   onClose: () => void;
+//   onConfirm: () => void;
+// }) {
+//   if (!isOpen) return null;
 
-//     return (
-//         <div className="fixed inset-0 flex items-center justify-center z-50">
-//             <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
-//             <div className="bg-white rounded shadow-lg p-4 z-10">
-//                 <h2 className="text-lg font-bold mb-2">Confirm Deletion</h2>
-//                 <p>Are you sure you want to delete this post?</p>
-//                 <div className="mt-4 flex justify-end">
-//                     <button onClick={onClose} className="bg-gray-300 text-gray-700 rounded px-4 py-2 mr-2">
-//                         Cancel
-//                     </button>
-//                     <button onClick={onConfirm} className="bg-red-500 text-white rounded px-4 py-2">
-//                         Delete
-//                     </button>
-//                 </div>
-//             </div>
+//   return (
+//     <div className="fixed inset-0 flex items-center justify-center z-50">
+//       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose} />
+//       <div className="bg-white rounded shadow-lg p-4 z-10">
+//         <h2 className="text-lg font-bold mb-2">Confirm Deletion</h2>
+//         <p>Are you sure you want to delete this post?</p>
+//         <div className="mt-4 flex justify-end">
+//           <button
+//             onClick={onClose}
+//             className="bg-gray-300 text-gray-700 rounded px-4 py-2 mr-2"
+//           >
+//             Cancel
+//           </button>
+//           <button
+//             onClick={onConfirm}
+//             className="bg-red-500 text-white rounded px-4 py-2"
+//           >
+//             Delete
+//           </button>
 //         </div>
-//     );
+//       </div>
+//     </div>
+//   );
 // }
