@@ -9,14 +9,14 @@ import { headers } from "next/dist/server/request/headers";
 export async function createPost(
   title: string,
   content: string,
-  //   coverImageUrl: string | null,
+  coverImageUrl: string | null,
   authorId: string
 ) {
   const newPost = await prisma.post.create({
     data: {
       title,
       content,
-      //   coverImage: coverImageUrl || null,
+      coverImage: coverImageUrl || null,
       authorId,
     },
   });
@@ -48,10 +48,6 @@ export async function deletePost(postId: number) {
   } else {
     console.log(`Failed to delete post with ID ${postId}.`);
   }
-
-  // Revalidate the home page to reflect the deletion
-  console.log("response ...", response);
-  revalidatePath("/");
 
   return response;
 }

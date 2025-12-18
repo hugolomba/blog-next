@@ -62,7 +62,7 @@ export default async function Article({
           src={post.coverImage || ""}
           alt="article cover image"
           fill
-          className="object-cover"
+          className="object-contain"
           loading="eager"
         />
       </div>

@@ -19,12 +19,14 @@ export default function RichTextEditor({
       apiKey={process.env.NEXT_PUBLIC_RICH_TEXT_EDITOR_API_KEY}
       value={value}
       onEditorChange={(newValue) => onChange(newValue)}
+      className="w-full"
       init={{
         skin: isDarkMode ? "oxide-dark" : "oxide",
         content_css: isDarkMode ? "dark" : "default",
         plugins: ["lists", "link"],
         toolbar:
           "undo redo| title | bold italic underline | bullist numlist | link",
+        width: "100%",
       }}
       // initialValue={value}
     />

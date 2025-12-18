@@ -14,7 +14,6 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  useDisclosure,
 } from "@heroui/react";
 import Link from "next/link";
 import { deleteComment } from "@/lib/actions/comments-actions";
@@ -40,8 +39,6 @@ export default function CommentCard({
     setIsDeleting(true);
     try {
       const response = await deleteComment(commentId, comment.postId);
-
-      console.log("Delete comment response:", response);
 
       if (!response) {
         throw new Error("Failed to delete comment");
@@ -80,11 +77,6 @@ export default function CommentCard({
             className="text-gray-500 text-lg absolute right-5 top-5 active:text-red-800 hover:text-red-600 cursor-pointer"
             role="button"
             tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === " ") {
-                openDeleteModal();
-              }
-            }}
           >
             <FaRegTrashAlt />
           </span>
