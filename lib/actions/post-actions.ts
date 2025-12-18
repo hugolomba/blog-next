@@ -51,3 +51,29 @@ export async function deletePost(postId: number) {
 
   return response;
 }
+
+// update a post
+export async function updatePost({
+  id,
+  title,
+  content,
+  coverImage,
+}: {
+  id: number;
+  title: string;
+  content: string;
+  coverImage: string | null;
+}) {
+  const updatedPost = await prisma.post.update({
+    where: { id },
+    data: {
+      title,
+      content,
+      coverImage: coverImage || null,
+    },
+  });
+
+  revalidatePath("/");
+
+  return updatedPost;
+}

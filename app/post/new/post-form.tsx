@@ -1,9 +1,9 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import RichTextEditor from "../../utils/RichTextEditor";
 
 import Link from "next/link";
-import { createPost } from "@/lib/actions/post-actions";
+import { createPost, updatePost } from "@/lib/actions/post-actions";
 import {
   Modal,
   ModalContent,
@@ -19,7 +19,7 @@ type PostType = {
   id: number;
   title: string;
   content: string;
-  coverImage?: string;
+  coverImage?: string | null;
 };
 
 type PostFormProps = {
@@ -33,12 +33,11 @@ export default function PostForm({
   mode = "create",
   authorId,
 }: PostFormProps) {
-  // const { user } = useAuth();
   const [title, setTitle] = useState(post?.title || "");
   const [content, setContent] = useState(post?.content || "");
-  const [postId, setPostId] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
+  const currentPostId = post?.id;
 
   useEffect(() => {
     if (post) {
@@ -59,30 +58,23 @@ export default function PostForm({
     e.preventDefault();
 
     try {
-      setIsLoading(true);
       setIsModalOpen(true);
 
-      const newPost = await createPost(title, content, imageUrl, authorId);
-      setPostId(newPost.id);
-      console.log("New Post Created: ", newPost);
-
-      // const url =
-      //   mode === "edit" && post?.id
-      //     ? `${import.meta.env.VITE_API_URL_BASE}/posts/${post.id}`
-      //     : `${import.meta.env.VITE_API_URL_BASE}/posts`;
-      // const method = mode === "edit" ? "PUT" : "POST";
-      // const res = await fetch(url, {
-      //   method,
-      //   headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      //   body: formData,
-      // });
-      // const data = await res.json();
-      // if (mode === "create" && data.id) setNewPostId(data.id);
+      if (mode === "edit" && currentPostId) {
+        await updatePost({
+          id: currentPostId,
+          title,
+          content,
+          coverImage: imageUrl,
+        });
+      } else {
+        const newPost = await createPost(title, content, imageUrl, authorId);
+        console.log("New Post Created: ", newPost);
+      }
     } catch (err) {
-      throw err;
+      console.error(err);
     } finally {
-      setIsLoading(false);
-      resetForm();
+      if (mode === "create") resetForm();
     }
   };
 
@@ -154,13 +146,14 @@ export default function PostForm({
               <ModalFooter className="flex flex-col items-center">
                 <Link
                   className="py-2 px-4 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
-                  href={`/post/${postId}`}
+                  href={`/post/${currentPostId ?? ""}`}
                 >
                   View Post
                 </Link>
                 <Button
                   onPress={() => {
                     setIsModalOpen(false);
+                    if (mode === "create") resetForm();
                   }}
                   className="bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
                 >

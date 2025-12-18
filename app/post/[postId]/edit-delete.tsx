@@ -41,7 +41,7 @@ export default function EditDeleteButtons({ postId }: { postId: number }) {
     <div className="flex mt-4 items-center gap-2">
       <Link
         // href={`/post/${post.id}/edit`}
-        href={""}
+        href={`/post/edit/${postId}`}
         className="bg-blue-500 text-white rounded-lg hover:bg-blue-600 flex flex-row items-center gap-1 px-2 py-1"
       >
         Edit <MdEdit />
