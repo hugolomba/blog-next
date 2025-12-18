@@ -13,7 +13,7 @@ interface RecentPostsProps {
         };
       };
     };
-  }>;
+  }>[];
 }
 
 export default function RecentPosts({ publishedPosts }: RecentPostsProps) {

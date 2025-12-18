@@ -1,11 +1,6 @@
 import PostCard from "@/components/PostCard";
 import type { Prisma } from "@/prisma/generated/client";
 
-// import { SearchContext } from "../contexts/SearchContext";
-// import { useContext, useState } from "react";
-// import SearchUserResultCard from "@/components/SearchUserResultCard";
-// import Loading from "./Loading";
-
 export default function SearchResults({
   searchResults,
 }: {
@@ -13,10 +8,11 @@ export default function SearchResults({
     | Prisma.PostGetPayload<{
         include: {
           author: true;
-          comments: true;
-          likes: true;
-          categories: true;
-          savedBy: true;
+          comments: {
+            include: {
+              author: true;
+            };
+          };
         };
       }>[]
     | null;
