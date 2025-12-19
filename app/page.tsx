@@ -23,7 +23,7 @@ export default async function Home({
   }
 
   return (
-    <main className="container mx-auto px-4">
+    <main className="container mx-auto px-4 ">
       <Header />
       {query ? (
         <SearchResults searchResults={posts} />

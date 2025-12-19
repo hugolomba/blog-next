@@ -38,6 +38,7 @@ export default function PostForm({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>("");
   const currentPostId = post?.id;
+  const [newPostId, setNewPostId] = useState<number | null>(null);
 
   useEffect(() => {
     if (post) {
@@ -69,7 +70,8 @@ export default function PostForm({
         });
       } else {
         const newPost = await createPost(title, content, imageUrl, authorId);
-        console.log("New Post Created: ", newPost);
+        console.log("new post created :", newPost);
+        setNewPostId(newPost.id);
       }
     } catch (err) {
       console.error(err);
@@ -146,7 +148,7 @@ export default function PostForm({
               <ModalFooter className="flex flex-col items-center">
                 <Link
                   className="py-2 px-4 bg-linear-to-r from-pink-500 to-yellow-500 dark:from-blue-600 dark:to-purple-600 text-white rounded-3xl shadow hover:scale-105 transition"
-                  href={`/post/${currentPostId ?? ""}`}
+                  href={`/post/${mode === "edit" ? currentPostId : newPostId}`}
                 >
                   View Post
                 </Link>

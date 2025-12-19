@@ -1,14 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import {
-  signIn,
-  signUp,
-  signOut,
-  signInSocial,
-} from "@/lib/actions/auth-actions";
-import { redirect } from "next/navigation";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn, signUp, signInSocial } from "@/lib/actions/auth-actions";
 import { Button, Input } from "@heroui/react";
 
 export default function AuthClientPage() {
@@ -19,7 +13,6 @@ export default function AuthClientPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const searchParams = useSearchParams();
 
   // Get callback URL from search params (set by middleware)
 

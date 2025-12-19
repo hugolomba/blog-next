@@ -77,3 +77,20 @@ export async function updatePost({
 
   return updatedPost;
 }
+
+// delete all posts by a user
+export async function deletePostsByUser() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  const deletedPosts = await prisma.post.deleteMany({
+    where: {
+      authorId: session?.user.id,
+    },
+  });
+
+  revalidatePath("/settings");
+
+  return deletedPosts;
+}
