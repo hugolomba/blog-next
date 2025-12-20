@@ -1,18 +1,8 @@
-<br/>
-<div align="center">
-<a href="https://github.com/ShaanCoding/ReadME-Generator">
-<img src="https://res.cloudinary.com/dck0d5qwp/image/upload/v1766247861/Screenshot_2025-12-20_at_16.23.45_qatkgu.png" alt="Logo" width="80" height="80">
-</a>
-<h3 align="center">Full Stack Blopg</h3>
-<p align="center">
+## Full Stack Blog
+
 Full-stack blog platform developed with Next.js, TypeScript, Tailwind CSS, Prisma, Better Auth, and full CRUD functionality.
 
-<br/>
-<br/>
-<a href="https://blogapp.hugo-miranda.dev/">View Demo .</a>
-
-</p>
-</div>
+[View Live Demo](https://blogapp.hugo-miranda.dev)
 
 ## About The Project
 
