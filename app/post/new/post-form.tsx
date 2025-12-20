@@ -70,7 +70,6 @@ export default function PostForm({
         });
       } else {
         const newPost = await createPost(title, content, imageUrl, authorId);
-        console.log("new post created :", newPost);
         setNewPostId(newPost.id);
       }
     } catch (err) {

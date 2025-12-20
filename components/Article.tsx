@@ -72,7 +72,7 @@ export default async function Article({
       )}
 
       <div
-        className="prose prose-base max-w-none mt-6"
+        className="prose prose-base max-w-none mt-6 text-xl text-justify"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
 

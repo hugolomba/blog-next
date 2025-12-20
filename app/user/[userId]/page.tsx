@@ -17,9 +17,6 @@ export default async function UserPage({
     headers: await headers(),
   });
 
-  console.log("UserPage session:", session?.user.id);
-  console.log("UserPage userId:", userId);
-
   return (
     <div className="container mx-auto max-w-7xl flex flex-col items-center mt-6 gap-2 p-4">
       <AuthorDetails author={user} />

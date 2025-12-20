@@ -42,11 +42,5 @@ export async function deleteUser() {
     },
   });
 
-  if (response) {
-    console.log(`User with ID ${session!.user!.id} deleted successfully.`);
-  } else {
-    console.log(`Failed to delete user with ID ${session!.user!.id}.`);
-  }
-
   return response;
 }

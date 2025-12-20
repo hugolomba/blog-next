@@ -43,12 +43,6 @@ export async function deletePost(postId: number) {
     },
   });
 
-  if (response) {
-    console.log(`Post with ID ${postId} deleted successfully.`);
-  } else {
-    console.log(`Failed to delete post with ID ${postId}.`);
-  }
-
   return response;
 }
 

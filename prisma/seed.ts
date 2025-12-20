@@ -141,8 +141,6 @@ const postContents: { [key: string]: string } = {
 };
 
 async function main() {
-  console.log("Start seeding...");
-
   await prisma.comment.deleteMany();
   await prisma.post.deleteMany();
   await prisma.user.deleteMany();
@@ -152,7 +150,6 @@ async function main() {
     const user = await prisma.user.create({ data: u });
     users.push(user);
   }
-  console.log(`Created ${users.length} users.`);
 
   const posts = [];
   for (const topic of Object.keys(postContents)) {
@@ -169,7 +166,6 @@ async function main() {
     });
     posts.push(post);
   }
-  console.log(`Created ${posts.length} posts.`);
 
   const sampleComments = [
     "Great insights! Thanks for sharing.",
@@ -194,9 +190,6 @@ async function main() {
       },
     });
   }
-  console.log("Created 100 comments.");
-
-  console.log("Seeding finished!");
 }
 
 main()
