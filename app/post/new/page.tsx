@@ -14,9 +14,9 @@ export default async function NewPostPage() {
 
   return (
     <div className="text-center py-8 px-4">
-      <h2 className="text-3xl font-bold mb-3 text-foreground">
+      <h1 className="text-3xl font-bold mb-3 text-foreground">
         Create a New Post ✨
-      </h2>
+      </h1>
       <p className="text-foreground mb-5">
         Share your ideas and stories with the world by creating a new blog post.
       </p>

@@ -19,5 +19,12 @@ export default async function UserEditPage({
 
   const editType = searchParams?.fromLogin ? "afterLogin" : "profile";
 
-  return <EditUserForm user={session.user} editType={editType} />;
+  return (
+    <>
+      <h1 className="text-3xl font-bold mb-6 text-center mt-4">
+        Edit Your Profile
+      </h1>
+      <EditUserForm user={session.user} editType={editType} />
+    </>
+  );
 }

@@ -51,7 +51,7 @@ export default async function Article({
 "
     >
       <div className="mb-4 flex flex-col items-center text-center">
-        <h2 className="text-4xl font-bold">{post.title}</h2>
+        <h1 className="text-4xl font-bold">{post.title}</h1>
         <span className="text-foreground/40 text-center">
           written by {post.author.name} - {timeAgo(post.createdAt)}
         </span>

@@ -9,5 +9,10 @@ export default async function EditPostPage({
   const { postId } = await params;
   const post = await getPostById(postId);
 
-  return <PostForm post={post} mode="edit" authorId={post.authorId} />;
+  return (
+    <>
+      <h1 className="text-3xl font-bold mb-6 text-center mt-4">Edit Post</h1>
+      <PostForm post={post} mode="edit" authorId={post.authorId} />
+    </>
+  );
 }

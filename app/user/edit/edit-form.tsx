@@ -19,7 +19,6 @@ interface EditUserFormProps {
 
 export function EditUserForm({ user, editType }: EditUserFormProps) {
   const [name, setName] = useState(user.name);
-  //   const [email, setEmail] = useState(user.email);
   const [bio, setBio] = useState(user.bio || "");
   const [imageUrl, setImageUrl] = useState(user.image || "");
 

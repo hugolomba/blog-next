@@ -5,9 +5,9 @@ type Session = typeof auth.$Infer.Session;
 export default function LoggedGreetings({ user }: { user: Session["user"] }) {
   return (
     <div className="text-center py-12 px-4  rounded-2xl">
-      <h2 className="text-3xl font-bold mb-3 text-foreground ">
+      <h1 className="text-3xl font-bold mb-3 text-foreground ">
         Welcome back, {user.name} 👋
-      </h2>
+      </h1>
       <p className="mb-6 text-foreground">Ready to share your ideas today?</p>
       <div className="flex flex-col items-center justify-center gap-4 ">
         <Link
